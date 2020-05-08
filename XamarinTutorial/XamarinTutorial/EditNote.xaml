@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:XamarinTutorial"
+             mc:Ignorable="d"
+             x:Class="XamarinTutorial.EditNote">
+
+    <ContentPage.BindingContext>
+        <local:EditNoteViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="225"/>
+            <RowDefinition Height="225"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="background.jpg"
+               Aspect="Fill" 
+               Grid.Column="0"  
+               Grid.ColumnSpan="2" 
+               Grid.Row="0" 
+               Grid.RowSpan="4"/>
+        
+        <Label Text="Edit Note"
+               FontSize="40"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"
+               Grid.ColumnSpan="2"
+               Grid.Row="0"
+               />
+        <Editor Text="{Binding EditText.NoteText}"
+                Margin="5"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                BackgroundColor="Black"
+                Opacity="0.5"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="20"/>
+        
+        <Button Text="Confirm"
+                VerticalOptions="CenterAndExpand"
+                Grid.Column="0"
+                Grid.Row="3"
+                Margin="5" 
+                BackgroundColor="LightGreen" 
+                BorderColor="Black" 
+                BorderWidth="3"
+                Command="{Binding ConfirmCommand}"/>
+        
+        <Button Text="Cancel"
+                VerticalOptions="CenterAndExpand"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="5"
+                BackgroundColor="Red" 
+                BorderColor="Black" 
+                BorderWidth="3"
+                Command="{Binding CancelCommand}"/>
+
+    </Grid>
+</ContentPage>

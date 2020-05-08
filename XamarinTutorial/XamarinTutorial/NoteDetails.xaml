@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:XamarinTutorial"
+             mc:Ignorable="d"
+             x:Class="XamarinTutorial.NoteDetails">
+    
+    <ContentPage.BindingContext>
+        <local:NoteDetailsViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="130"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="background.jpg"
+               Aspect="Fill" 
+               Grid.Column="0"  
+               Grid.ColumnSpan="2" 
+               Grid.Row="0" 
+               Grid.RowSpan="4"/>
+        <ScrollView Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="3">
+            <Label Text="{Binding SelectedNote.NoteText}"
+               FontSize="20"
+               FontAttributes="Bold"
+               BackgroundColor="Black"
+               Opacity="0.5"
+               Margin="10"
+               TextColor="White"
+               />
+          </ScrollView>
+
+        <Button Command="{Binding EditCommand}" 
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Text="Edit"
+                VerticalOptions="StartAndExpand"
+                Margin="10"
+                HeightRequest="35"
+                BackgroundColor="DeepSkyBlue"  
+                BorderColor="Black" 
+                BorderWidth="3"
+                FontSize="12"/>
+        
+        <Button Command="{Binding DeleteCommand}" 
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Text="Delete"
+                VerticalOptions="CenterAndExpand"
+                Margin="10"
+                BackgroundColor="DeepSkyBlue" 
+                BorderColor="Black" 
+                BorderWidth="3"
+                HeightRequest="35"
+                FontSize="12"/>
+
+        <Button Command="{Binding DismissCommand}"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Text="Dismiss"
+                VerticalOptions="EndAndExpand"
+                Margin="10"
+                BackgroundColor="Red" 
+                BorderColor="Black" 
+                BorderWidth="3"
+                HeightRequest="35"
+                FontSize="12"/>
+
+
+    </Grid>
+            
+</ContentPage>
